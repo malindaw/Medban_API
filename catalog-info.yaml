@@ -1,0 +1,38 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: cards-transactions-staging
+  description: |
+    test pipeline for cards-management and cards-transactions on staging
+  links:
+    - title: Cards transactions test results (Test Rail)
+      url: https://testrail.medirect.com//index.php?/runs/overview/57
+  annotations:
+    gocd.org/pipelines: 'cards-transactions-staging'
+    backstage.io/source-location: url:https://git.medirect.com/medirect/qa/apiautomation.git
+spec:
+  type: service
+  owner: developers
+  lifecycle: staging
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: clients-shortapply-staging-mt
+  description: |
+    test pipeline for cards-management and cards-transactions on staging
+  links:
+    - title: Clients Short Apply test results (Test Rail)
+      url: https://testrail.medirect.com//index.php?/runs/overview/38
+  annotations:
+    gocd.org/pipelines: 'clients-shortapply-staging-mt'
+    backstage.io/source-location: url:https://git.medirect.com/medirect/qa/apiautomation.git
+spec:
+  type: service
+  owner: developers
+  lifecycle: staging
+  dependsOn:
+  - component:cards-transactions-staging
+  #- component:onboarding
+
